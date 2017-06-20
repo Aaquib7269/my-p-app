@@ -1,0 +1,48 @@
+development:
+  sessions:
+    default:
+      database: shapp_production
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    include_root_in_json: false
+    raise_not_found_error: false
+    use_activesupport_time_zone: true
+    use_utc: false
+production:
+  sessions:
+    default:
+      database: shapp_production
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    include_root_in_json: false
+    raise_not_found_error: false
+    use_activesupport_time_zone: true
+    use_utc: false
+staging:
+  sessions:
+    default:
+      database: shapp_production
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    include_root_in_json: false
+    raise_not_found_error: false
+    use_activesupport_time_zone: true
+    use_utc: false
+test:
+  sessions:
+    default:
+      database: codename47_test
+      hosts:
+        - localhost:27017
+      options:
+        read: primary
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0

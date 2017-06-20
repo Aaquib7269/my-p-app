@@ -1,0 +1,46 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Cities</h3>
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+                <%= link_to '<i class="fa fa-plus"></i> &nbsp;Add City'.html_safe, new_city_path, :class => 'btn btn-block btn-info btn-sm'%>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <table id="cities_table" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="sorting_disabled center" style="width: 31px !important"></th>
+                    <th>Name</th>
+                    <th class="sorting_disabled">State Name</th>
+                    <th class="sorting_disabled">Created At</th>
+                    <th class="sorting_disabled">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="dataTables_empty" colspan="7">Loading cities from server</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $("#cities_table").dataTable({
+        "bJQueryUI"       : true,
+        "bProcessing"     : true,
+        "bAutoWidth"      : false,
+        "sPaginationType" : "full_numbers",
+        "aoColumns"       : [{"sType" : "html"}, null, null, null, null],
+        "aaSorting"       : [[0, 'asc'], [1, 'asc']],
+        "bServerSide"     : true,
+        "sAjaxSource"     : "/cities.json",
+        "language": {
+            "zeroRecords": "No cities found",
+            "infoEmpty": "No cities available"
+        }
+    })
+  })
+</script>

@@ -1,0 +1,1 @@
+json.extract! @user, :id, :first_name, :last_name, :email, :encrypted_password, :avtar, :country, :push_notification, :auto_refresh, :email_notification, :longitude, :latitude, :created_at, :updated_at

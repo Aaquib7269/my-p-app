@@ -1,0 +1,20 @@
+<div class="box box-widget">
+    <div class="box-header with-border">
+        <div class="user-block">
+            <img class="img-circle" src="<%= @product.user.profileimage_path %>" alt="User Image">
+            <span class="username"><a href="javascript:void(0)"><%= @product.user.full_name %></a></span>
+            <span class="description"><%= @product.formatted_created_at %></span>
+        </div>
+    </div>
+    <div class="box-body">
+        <p><%= @product.product_description %></p>
+        <hr />
+        <div class="row">
+            <% for product_image in @product.product_images %>
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <img src="<%= product_image.image_path %>" class="img-responsive">
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

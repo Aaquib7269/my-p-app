@@ -1,0 +1,79 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Contact Responses</h3>
+        <div class="box-tools pull-right">
+          <%= link_to 'Cancel', contacts_path, :class => 'btn btn-default btn-sm'%>
+        </div>
+    </div>
+</div>
+<div class="row">
+        <%= nested_form_for @contact, :html => {:class => 'form-horizontal'} do |f| %>
+        <div class="col-sm-6">
+            <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><%= "All Responses" %></h3>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Admin</th>
+                                <th class="sorting_disabled">Response</th>
+                                <th class="sorting_disabled">Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @contact.contact_responses.each do |response_data|%>
+                                <tr>
+                                    <td>
+                                        <%= response_data.admin.email %>
+                                    </td>
+                                    <td>
+                                        <%= response_data.message %>
+                                    </td>
+                                    <td>
+                                        <%= response_data.created_at.strftime('%A %d %B, %Y')%>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-6">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><%= "Add Responses" %></h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="models" class="table table-bordered">
+                            <tr>
+                                <th>Message</th>
+                                <th>Action</th>
+                            </tr>
+                            <%= f.fields_for :contact_responses, :wrapper => false do |task_form| %>
+                                <% if task_form.object.new_record? %>
+                                    <tr class="fields">
+                                        <td>
+                                            <%= task_form.text_area :message, :class => 'form-control', :placeholder => 'Response' %>
+                                            <%= task_form.hidden_field :admin_id, :value => current_admin.id %>
+                                        </td>
+                                        <td>
+                                            <%= task_form.link_to_remove "<i class='fa fa-trash'></i>".html_safe %>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            <% end %>
+                        </table>
+                        <br />
+                        <%= f.link_to_add "Add Response", :contact_responses, :data => { :target => "#models" }, :class => 'btn btn-sm btn-block btn-success' %>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-left">Submit</button>&nbsp;&nbsp;&nbsp;
+                        <%= link_to "Cancel", contacts_path, :class => "btn btn-default"%>
+                    </div>
+                </div>
+            </div>
+    <% end %>
+</div>

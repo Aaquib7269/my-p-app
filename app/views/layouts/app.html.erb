@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<title>Shapp</title>
+  		<%= stylesheet_link_tag 'app', media: 'all' %>
+  		<%= javascript_include_tag 'app' %>
+  		<%= csrf_meta_tags %>
+	</head>
+	<body class="<%= admin_signed_in? ? 'sidebar-mini skin-purple sidebar-collapse' : 'hold-transition login-page'%>">
+		<% if admin_signed_in? %>
+			<div class="wrapper">
+				<%= render :partial => 'layouts/app/header'%>
+				<%= render :partial => 'layouts/app/sidebar'%>
+				<div class="content-wrapper">
+					<%= render :partial => 'layouts/app/sub_header'%>
+					<section class="content">
+						<%= yield %>
+					</section>
+				</div>
+			</div>
+		<% else %>
+			<%= yield %>
+		<% end %>
+	</body>
+</html>

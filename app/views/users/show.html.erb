@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="box box-widget widget-user-2">
+            <div class="widget-user-header bg-yellow">
+                <h3 class="widget-user-username" style="margin-left: 0px !important"><%= @user.full_name %></h3>
+                <h5 class="widget-user-desc" style="margin-left: 0px !important">Email: <%= @user.email_address %></h5>
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                    <li>
+                        <a href="javascript:void(0)">Ratings
+                            <span class="pull-right badge bg-blue"><%= @user.my_ratings %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Followers
+                            <span class="pull-right badge bg-blue"><%= @user.followers_count %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Following
+                            <span class="pull-right badge bg-blue"><%= @user.followees_count %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="show_bids">Bids
+                            <span class="pull-right badge bg-blue"><%= @user.bids.count %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="show_products">Products
+                            <span class="pull-right badge bg-blue"><%= @user.products.count %></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
+                <div class="col-sm-12">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <%= f.check_box :is_premium %> &nbsp;&nbsp;Is Premium?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-left">Submit</button>&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+<div class="col-md-8" id="main_div">
+    <%= render :partial => 'users/user_products', :locals => {:user => @user}%>
+</div>
+
+</div>
+<script>
+$(document).ready(function(){
+    $("#show_products").click(function(){
+        $("#main_div").html('');
+        $("#main_div").html("<%= escape_javascript(render :partial => 'users/user_products', :locals => {:user => @user})%>");
+    });
+    $("#show_bids").click(function(){
+        $("#main_div").html('');
+        $("#main_div").html("<%= escape_javascript(render :partial => 'users/user_bids', :locals => {:user => @user})%>");
+    });
+});
+</script>

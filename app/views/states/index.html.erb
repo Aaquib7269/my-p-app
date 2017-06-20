@@ -1,0 +1,46 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">States</h3>
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+                <%= link_to '<i class="fa fa-plus"></i> &nbsp;Add State'.html_safe, new_state_path, :class => 'btn btn-block btn-info btn-sm'%>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <table id="states_table" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="sorting_disabled center" style="width: 31px !important"></th>
+                    <th>Name</th>
+                    <th>Country Name</th>
+                    <th>Created At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="dataTables_empty" colspan="7">Loading states from server</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $("#states_table").dataTable({
+        "bJQueryUI"       : true,
+        "bProcessing"     : true,
+        "bAutoWidth"      : false,
+        "sPaginationType" : "full_numbers",
+        "aoColumns"       : [{"sType" : "html"}, null, null, null, null],
+        "aaSorting"       : [[0, 'asc'], [1, 'asc']],
+        "bServerSide"     : true,
+        "sAjaxSource"     : "/states.json",
+        "language": {
+            "zeroRecords": "No states found",
+            "infoEmpty": "No States available"
+        }
+    })
+  })
+</script>

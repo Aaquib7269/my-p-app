@@ -1,0 +1,43 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Users</h3>
+    </div>
+    <div class="box-body">
+        <table id="users_table" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="sorting_disabled center" style="width: 31px !important"></th>
+                    <th>Full name</th>
+                    <th>Email</th>
+                    <th>Products Count</th>
+                    <th class="sorting_disabled">Is Premium</th>
+                    <th class="sorting_disabled">Created At</th>
+                    <th class="sorting_disabled">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="dataTables_empty" colspan="7">Loading users from server</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#users_table").dataTable({
+            "bJQueryUI"       : true,
+            "bProcessing"     : true,
+            "bAutoWidth"      : false,
+            "sPaginationType" : "full_numbers",
+            "aoColumns"       : [{"sType" : "html"}, null, null, null, null, null, null],
+            "aaSorting"       : [[0, 'asc'], [1, 'asc']],
+            "bServerSide"     : true,
+            "sAjaxSource"     : "/users.json",
+            "language": {
+                "zeroRecords": "No users found",
+                "infoEmpty": "No users available"
+            }
+        })
+    })
+</script>

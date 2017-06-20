@@ -1,0 +1,57 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.text_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :product_name %><br>
+    <%= f.text_field :product_name %>
+  </div>
+  <div class="field">
+    <%= f.label :product_description %><br>
+    <%= f.text_field :product_description %>
+  </div>
+  <div class="field">
+    <%= f.label :bid_start %><br>
+    <%= f.datetime_select :bid_start %>
+  </div>
+  <div class="field">
+    <%= f.label :bid_end %><br>
+    <%= f.datetime_select :bid_end %>
+  </div>
+  <div class="field">
+    <%= f.label :bill_included %><br>
+    <%= f.check_box :bill_included %>
+  </div>
+  <div class="field">
+    <%= f.label :min_bid_price %><br>
+    <%= f.text_field :min_bid_price %>
+  </div>
+  <div class="field">
+    <%= f.label :buy_now_price %><br>
+    <%= f.text_field :buy_now_price %>
+  </div>
+  <div class="field">
+    <%= f.label :sold_to_id %><br>
+    <%= f.text_field :sold_to_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

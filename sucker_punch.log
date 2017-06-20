@@ -1,0 +1,11 @@
+# Logfile created on 2016-07-20 00:10:17 +0530 by logger.rb/54362
+E, [2016-08-17T19:49:11.532343 #11077] ERROR -- : Sucker Punch job error for class: 'EmailJob' args: []
+NoMethodError undefined method `perform' for #<EmailJob:0x007fd7062c5ee0>
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/sucker_punch-2.0.2/lib/sucker_punch/job.rb:54:in `__run_perform'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/sucker_punch-2.0.2/lib/sucker_punch/job.rb:36:in `block in perform_async'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:348:in `run_task'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:337:in `block (3 levels) in create_worker'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `loop'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `block (2 levels) in create_worker'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `catch'
+/Users/amolaher/.rvm/gems/ruby-2.3.1@4.2.6/gems/concurrent-ruby-1.0.2/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `block in create_worker'

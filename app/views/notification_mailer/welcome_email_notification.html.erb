@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+    	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    	<style type="text/css">
+    	.header_logo_wrapper {
+			    margin: 0 auto;
+			    text-align: center;
+			    width: 180px;
+			    height: 180px;
+			}
+    	</style>
+  	</head>
+  	<body>
+  		<div class="header_logo_wrapper" style="margin:0 auto; text-align:center" width='180px' height="180px">
+  			<img src="http://shapp.dk/assets/base_logo.png">
+  		</div>
+    	<p>
+        Velkommen til SHAPP
+      </p>
+      <p>
+        Vi er glade for at du har valgt at oprette en bruger hos SHAPP.
+      </p>
+      <p>
+        Din profil er oprettet, men af sikkerhedsmæssige årsager skal du bekræfte denne mail, så registreringen er endelig.
+      </p>      
+        <p>Brugernavn: <%= @user_email%></p>
+        <p>Password: <%= @password %></p>
+         <p>
+        <%= link_to "Klik her for at aktivere kontoen", confirm_account_url(:u => @encrypted_email) %>
+         </p>
+        <p>Du kan nu SHAPP’E løs!</p>
+         
+        <p>Ha’ en fantastisk dag, som ny auktionarius.</p>
+         
+        <p>Følg  SHAPP & venner</p>   
+         
+        <p>Resten af flokken hænger ud på Facebook "Facebook page url" og Instagram "Instagram Url" med hashtagget #ShappDK og #auktionpåfarten.
+        Kom og SHAPP med!</p>   
+         
+        <p>SHAPP glæder sig til at se dig!</p>
+  </body>
+</html>

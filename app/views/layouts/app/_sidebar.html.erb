@@ -1,0 +1,50 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="<%= admin_path %>">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= users_path %>">
+                    <i class="fa fa-users"></i> <span>Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= products_path %>">
+                    <i class="fa fa-file-text"></i> <span>Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= categories_path %>">
+                    <i class="fa fa-tags"></i> <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= contacts_path %>">
+                    <i class="fa fa-tags"></i> <span>Contacts</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= brands_path %>">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> <span>Brands</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-location-arrow"></i>
+                    <span>Locations</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="<%= countries_path %>"><i class="fa fa-circle-o"></i> Countries</a>
+                        <a href="<%= states_path %>"><i class="fa fa-circle-o"></i> States</a>
+                        <a href="<%= cities_path %>"><i class="fa fa-circle-o"></i> Cities</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>

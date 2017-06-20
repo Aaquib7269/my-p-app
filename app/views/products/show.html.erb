@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="box box-widget widget-user-2">
+            <div class="widget-user-header bg-yellow">
+                <h3 class="widget-user-username" style="margin-left: 0px !important"><%= @product.product_name %></h3>
+                <h5 class="widget-user-desc" style="margin-left: 0px !important">Uploaded by: <%= @product.user.full_name %></h5>
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                    <li>
+                        <a href="javascript:void(0)">Ratings
+                            <span class="pull-right badge bg-blue"><%= @product.product_rating %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Views
+                            <span class="pull-right badge bg-blue"><%= @product.product_views.count %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="show_bids">Bids
+                            <span class="pull-right badge bg-blue"><%= @product.bids.count %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="show_comments">Comments
+                            <span class="pull-right badge bg-aqua"><%= @product.comments.count %></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <%= form_for @product, :html => {:class => 'form-horizontal'} do |f| %>
+                <div class="col-sm-12">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <%= f.check_box :is_approved %> &nbsp;&nbsp;Approve/Reject Product
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-left">Submit</button>&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+<div class="col-md-8" id="main_div">
+    <%= render :partial => 'products/product_details', :locals => {:product => @product}%>
+</div>
+
+</div>
+<script>
+$(document).ready(function(){
+    $("#show_comments").click(function(){
+        $("#main_div").html('');
+        $("#main_div").html("<%= escape_javascript(render :partial => 'products/product_comments', :locals => {:product => @product})%>");
+    });
+    $("#show_bids").click(function(){
+        $("#main_div").html('');
+        $("#main_div").html("<%= escape_javascript(render :partial => 'products/product_bids', :locals => {:product => @product})%>");
+    });
+});
+</script>
